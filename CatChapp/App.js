@@ -1,7 +1,7 @@
 // Import
 import { StyleSheet } from 'react-native';
 import * as React from 'react';
-import { View, Text, Button} from 'react-native';
+import { View, Text, Button, Image} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -14,6 +14,14 @@ const forFade = ({ current }) => ({
   },
 });
 
+function LogoTitle() {
+  return (
+    <Image
+      style={{ width: 60, height: 80 }}
+      source={require('./assets/logo.png')}
+    />
+  );
+}
 
 //Gestion globale de l'appli
 function App() {
@@ -25,16 +33,22 @@ function App() {
       screenOptions={{
         headerMode: 'screen',
         headerTintColor: 'white',
-        headerStyle: { backgroundColor: 'tomato' },
+        headerStyle: { backgroundColor: '#f1948a' },
       }} //gestion du haut de page
       >
 
-      <Stack.Screen name="Accueil" component={HomeScreen} />
+      <Stack.Screen
+       name="Accueil" 
+       component={HomeScreen}
+       options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
+       />
+
+
       <Stack.Screen name="Authentification" component={AuthScreen} />
       <Stack.Screen
       name="Profil"
       component={Profil}
-      options={{ cardStyleInterpolator: forFade }}
+      options={{ cardStyleInterpolator: forFade, }}
       />
       </Stack.Navigator>
     </NavigationContainer>
@@ -49,7 +63,8 @@ function HomeScreen({ navigation } ) {
     
     <View style={styles.container}>
       <Text style={{fontSize: 28, textAlign: 'center', marginTop: 80, marginBottom: 40, fontFamily: 'American Typewriter'}}>
-      Bonjour et bienvenue sur mon appli !
+      Bonjour !{"\n"}
+      Que souhaitez vous faire ?
       </Text>
       <Button
         title="S'authentifier"
@@ -81,6 +96,10 @@ function Profil({ navigation }) {
     </View>
   );
 }
+
+
+
+
 
 
 //Style
