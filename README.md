@@ -13,7 +13,7 @@ Services à implémenter/implémentés :
 </p>
 
 <br>
-Liens utiles :
+Liens utiles : <br>
 - https://firebase.google.com/docs/auth/web/start?authuser=0&hl=fr <br>
 - https://cloud.google.com/firestore/docs/data-model?hl=fr <br>
 - https://trello.com/c/ETA3hPRf/12-documentation
