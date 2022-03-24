@@ -4,7 +4,33 @@ import * as React from 'react';
 import { View, Text, Button, Image} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
+
+//Initialisation de firebase
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+
+};
+const app = initializeApp(firebaseConfig);
+
+
+
+//Gestion de la connexion
+const auth = getAuth();
+
+
+/*signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });*/
 
 //Constantes
 const Stack = createNativeStackNavigator();
