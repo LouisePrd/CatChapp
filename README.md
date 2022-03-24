@@ -14,6 +14,6 @@ Services à implémenter/implémentés :
 
 <br>
 Liens utiles :
-- https://firebase.google.com/docs/auth/web/start?authuser=0&hl=fr
-- https://cloud.google.com/firestore/docs/data-model?hl=fr
+- https://firebase.google.com/docs/auth/web/start?authuser=0&hl=fr <br>
+- https://cloud.google.com/firestore/docs/data-model?hl=fr <br>
 - https://trello.com/c/ETA3hPRf/12-documentation
