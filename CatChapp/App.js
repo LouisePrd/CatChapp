@@ -3,10 +3,9 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
-
 import HomeScreen from './components/HomeScreen';
 import AboutScreen from './components/AboutScreen';
-
+import ConnexionScreen from './components/ConnexionScreen';
 
 export default class App extends React.Component {
   render() {
@@ -20,7 +19,10 @@ const AppNavigator = createStackNavigator({
   },
   About: {
     screen: AboutScreen
-  }
+  },
+  Connexion: {
+    screen: ConnexionScreen
+  },
   },{
         initialRouteName: "Home"
 });

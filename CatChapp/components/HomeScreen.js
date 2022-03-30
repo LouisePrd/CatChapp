@@ -11,7 +11,7 @@ export default class HomeScreen extends Component {
         <Text style={styles.textS}>Bonjour,{"\n"} Que souhaitez-vous faire ?</Text>
           <Button
           title="CONNEXION"
-          onPress={() => this.props.navigation.navigate('About')}
+          onPress={() => this.props.navigation.navigate('Connexion')}
 />
       </View>
     )
