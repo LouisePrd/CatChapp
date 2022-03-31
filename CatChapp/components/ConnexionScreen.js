@@ -27,9 +27,8 @@ export default class ConnexionScreen extends Component {
     }
 
     handleSubmit(){
-        this.setState({
-            showText:true
-        })
+        console.log(this.state.user)
+        alert(this.state.user)
     }
   render() {
     return (
