@@ -19,9 +19,6 @@ const AppNavigator = createStackNavigator({
   Home: {
     screen: HomeScreen,
     navigationOptions: () => ({
-      //headerBackImage: () => <BackIcon width={25} height={25} />,
-      headerTitleStyle: { fontSize: 25},
-      headerBackImage: ()=>(<YourAsset />),
       headerStyle: { backgroundColor: '#f1948a' },
       headerTitle: (props) => <LogoTitle {...props} />,
     }),
@@ -36,7 +33,7 @@ const AppNavigator = createStackNavigator({
 
 const AppContainer = createAppContainer(AppNavigator);
 
-
+//retourne le logo du header
 function LogoTitle() {
   return (
     <Image
