@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import "firebase/auth";
 import styles from '../components/styles';
 import { firebase } from '../firebase/config'
-
 
 export default function LoginScreen({navigation}) {
     const [email, setEmail] = useState('')
@@ -20,7 +18,7 @@ export default function LoginScreen({navigation}) {
             .signInWithEmailAndPassword(email, password)
             .then((response) => {
                 const uid = response.user.uid
-                const usersRef = firebase.firestore().collection('users')
+                const usersRef = firebase.firestore().collection('Users')
                 usersRef
                     .doc(uid)
                     .get()
