@@ -16,11 +16,11 @@ export default class HomeScreen extends Component {
           <Button
           title="Connexion"
           color="#4d1a8a"
-          onPress={() => this.props.navigation.navigate('About')}/>
-          <Button
-          title="Explorer"
-          color="#4d1a8a"
           onPress={() => this.props.navigation.navigate('Connexion')}/>
+                    <Button
+          title="Camera"
+          color="#4d1a8a"
+          onPress={() => this.props.navigation.navigate('Camera')}/>
           <Image
           source={require('../assets/cat.gif')}
           style={{

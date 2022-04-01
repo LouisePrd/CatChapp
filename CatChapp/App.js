@@ -7,7 +7,8 @@ import { createAppContainer } from "react-navigation";
 import HomeScreen from './components/HomeScreen';
 import AboutScreen from './components/AboutScreen';
 import ConnexionScreen from './components/ConnexionScreen';
-
+import InscriptionScreen from './components/InscriptionScreen';
+import CameraScreen from './components/CameraScreen';
 
 export default class App extends React.Component {
   render() {
@@ -24,10 +25,32 @@ const AppNavigator = createStackNavigator({
     }),
   },
   About: {
-    screen: AboutScreen
+    screen: AboutScreen,
+    navigationOptions: () => ({
+      headerStyle: { backgroundColor: '#f1948a' },
+      headerTitle: (props) => <LogoTitle {...props} />,
+    }),
   },
   Connexion: {
-    screen: ConnexionScreen
+    screen: ConnexionScreen,
+    navigationOptions: () => ({
+      headerStyle: { backgroundColor: '#f1948a' },
+      headerTitle: (props) => <LogoTitle {...props} />,
+    }),
+  },
+  Camera: {
+    screen: CameraScreen,
+    navigationOptions: () => ({
+      headerStyle: { backgroundColor: '#f1948a' },
+      headerTitle: (props) => <LogoTitle {...props} />,
+    }),
+  },
+  Inscription: {
+    screen: InscriptionScreen,
+    navigationOptions: () => ({
+      headerStyle: { backgroundColor: '#f1948a' },
+      headerTitle: (props) => <LogoTitle {...props} />,
+    }),
   }
 });
 
