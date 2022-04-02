@@ -1,77 +1,122 @@
-import React, { useState } from 'react'
-import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import styles from '../components/styles';
-import { firebase } from '../firebase/config'
+import {Keyboard,KeyboardAvoidingView,StyleSheet,Text,TextInput,TouchableOpacity,TouchableWithoutFeedback,View,} from "react-native";
 
-export default function LoginScreen({navigation}) {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+import { StatusBar } from "expo-status-bar";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { showMessage } from "react-native-flash-message";
+import { useState } from "react";
+import { auth } from "../firebase";
 
-    const onFooterLinkPress = () => {
-        navigation.navigate('Inscription')
-    }
+const ConnexionScreen = ({ navigation }) => {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 
-    const onLoginPress = () => {
-      firebase
-            .auth()
-            .signInWithEmailAndPassword(email, password)
-            .then((response) => {
-                const uid = response.user.uid
-                const usersRef = firebase.firestore().collection('Users')
-                usersRef
-                    .doc(uid)
-                    .get()
-                    .then(firestoreDocument => {
-                        if (!firestoreDocument.exists) {
-                            alert("User does not exist anymore.")
-                            return;
-                        }
-                        const user = firestoreDocument.data()
-                        navigation.navigate('Home', {user})
-                    })
-                    .catch(error => {
-                        alert(error)
-                    });
-            })
-            .catch(error => {
-                alert(error)
-            })
-    }
+	const login = async (email, password) => {
+		signInWithEmailAndPassword(auth, email, password)
+	  .then((userCredential) => {
+		const user = userCredential.user;
+		console.log(user);
+	  })
+	  .catch((error) => {
+		const errorCode = error.code;
+		const errorMessage = error.message;
+		console.log('nop');
+	  });
+	};
 
-    return (
-        <View style={styles.container}>
-            <KeyboardAwareScrollView
-                style={{ flex: 1, width: '100%' }}
-                keyboardShouldPersistTaps="always">
-                <TextInput
-                    style={styles.input}
-                    placeholder='E-mail'
-                    placeholderTextColor="#aaaaaa"
-                    onChangeText={(text) => setEmail(text)}
-                    value={email}
-                    underlineColorAndroid="transparent"
-                    autoCapitalize="none"
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholderTextColor="#aaaaaa"
-                    secureTextEntry
-                    placeholder='Mot de passe'
-                    onChangeText={(text) => setPassword(text)}
-                    value={password}
-                    underlineColorAndroid="transparent"
-                    autoCapitalize="none"
-                />
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => onLoginPress()}>
-                    <Text style={styles.buttonTitle}>Lets go !</Text>
-                </TouchableOpacity>
-                <View style={styles.footerView}>
-                    <Text style={styles.footerText}>Pas encore de compte ? <Text onPress={onFooterLinkPress} style={styles.footerLink}>S'inscrire</Text></Text>
-                </View>
-            </KeyboardAwareScrollView>
-        </View>
-    )
-}
+	return (
+		<TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+			<KeyboardAvoidingView style={styles.container}>
+				<Text style={styles.title}>Connexion</Text>
+
+				<View style={styles.form}>
+					<View style={styles.input}>
+						<TextInput
+							style={{ height: 50 }}
+							placeholder="Adresse mail"
+							onChangeText={setEmail}
+						/>
+					</View>
+
+					<View style={styles.input}>
+						<TextInput
+							style={{ height: 50 }}
+							placeholder="Mot de passe"
+							secureTextEntry={true}
+							onChangeText={setPassword}
+						/>
+					</View>
+
+					<TouchableOpacity
+						onPress={() => {
+							login(email, password);
+						}}
+					>
+						<View style={styles.button}>
+							<Text style={styles.buttonText}>Let's go</Text>
+						</View>
+					</TouchableOpacity>
+
+					<Text
+						style={styles.link}
+						onPress={() => navigation.navigate("Inscription")}
+					>
+						Pas encore de compte ?
+					</Text>
+				</View>
+
+				<StatusBar style="auto" />
+			</KeyboardAvoidingView>
+		</TouchableWithoutFeedback>
+	);
+};
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		alignItems: "center",
+		paddingTop: 100,
+		backgroundColor: "#F9CBCB",
+	},
+	link: {
+		color: "#788eec",
+		marginTop: 20,
+		alignSelf: "center",
+        fontWeight: "bold",
+        fontSize: 16
+	},
+	button: {
+		alignItems: "center",
+		paddingTop: 16,
+		paddingBottom: 16,
+		borderRadius: 8,
+		backgroundColor: "#788eec",
+	},
+	buttonText: {
+		color: "white",
+		fontSize: 16,
+		fontWeight: "600",
+	},
+	form: {
+		alignSelf: "stretch",
+		marginTop: 32,
+		marginLeft: 16,
+		marginRight: 16,
+	},
+
+	input: {
+		justifyContent: "center",
+		backgroundColor: "#F6F6F6",
+		height: 50,
+		padding: 16,
+		marginBottom: 16,
+		borderWidth: 1,
+		borderColor: "#FFFFFF",
+		borderRadius: 8,
+	},
+	title: {
+		fontSize: 30,
+		fontWeight: "600",
+	},
+});
+
+export default ConnexionScreen;

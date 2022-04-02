@@ -1,8 +1,6 @@
 // Homes.js
 import React, { Component } from 'react';
 import { Button, View, Text, StyleSheet, Alert, Image, ImageBackground, TouchableOpacity } from 'react-native';
-import { createStackNavigator } from "react-navigation-stack";
-import { createAppContainer } from "react-navigation";
 
 export default class HomeScreen extends Component {
   
@@ -13,42 +11,38 @@ export default class HomeScreen extends Component {
                  resizeMode='cover' 
                  source={require('../assets/fond2.png')}>
         <Text style={styles.textS}>Bienvenue !{"\n"} Que souhaitez-vous faire ?</Text>
-          <Button
-          title="Connexion"
-          color="#4d1a8a"
-          onPress={() => this.props.navigation.navigate('Connexion')}/>
-                    <Button
-          title="Camera"
-          color="#4d1a8a"
-          onPress={() => this.props.navigation.navigate('Camera')}/>
+        <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.props.navigation.navigate('Connexion')}>
+              <Text style={styles.buttonTitle}>Connexion</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.props.navigation.navigate('Inscription')}>
+              <Text style={styles.buttonTitle}>Inscription</Text>
+          </TouchableOpacity>
           <Image
           source={require('../assets/cat.gif')}
-          style={{
-            width: 350,
-            height: 250,
-            alignSelf: 'center',
-            marginBottom: 20,
-            marginTop : 20}}
+          style={styles.img}
           />
-          <Button
-          title="En savoir plus"
-          color="#904c8c"
-          onPress={() => this.props.navigation.navigate('About')}/>
+          <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.props.navigation.navigate('About')}>
+              <Text style={styles.buttonTitle}>A propos</Text>
+          </TouchableOpacity>
           </ImageBackground>
       </View>
     )
   }
 }
 
+//onPress={() => Alert.alert('Simple Button pressed')}
 
 
 //Styles
-          //onPress={() => Alert.alert('Simple Button pressed')}
 const styles = StyleSheet.create({
   container: {
-    fontSize: 2,
     flex: 1,
-    //backgroundColor: '#E7C5E8',
   },
   imgBackground: {
     width: '100%',
@@ -62,5 +56,27 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 25,
     paddingBottom: 30,
-  }
+  },
+  buttonTitle: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  button: {
+    backgroundColor: '#f1948a',
+    marginLeft: 80,
+    marginRight: 80,
+    marginTop: 20,
+    height: 40,
+    borderRadius: 5,
+    alignItems: "center",
+    justifyContent: 'center',
+  },
+  img: {
+    width: 350,
+    height: 250,
+    alignSelf: 'center',
+    marginBottom: 20,
+    marginTop : 30
+  },
 });
