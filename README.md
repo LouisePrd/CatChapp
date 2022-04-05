@@ -16,5 +16,4 @@ Services à implémenter/implémentés :
 Liens utiles : <br>
 - https://firebase.google.com/docs/auth/web/start?authuser=0&hl=fr <br>
 - https://cloud.google.com/firestore/docs/data-model?hl=fr <br>
-- https://trello.com/c/ETA3hPRf/12-documentation <br>
 - https://blog.jscrambler.com/how-to-integrate-firebase-authentication-with-an-expo-app
