@@ -17,3 +17,14 @@ Liens utiles : <br>
 - https://firebase.google.com/docs/auth/web/start?authuser=0&hl=fr <br>
 - https://cloud.google.com/firestore/docs/data-model?hl=fr <br>
 - https://blog.jscrambler.com/how-to-integrate-firebase-authentication-with-an-expo-app
+
+<br><br>
+Get Started (mode d'emploi à venir) :<br>
+Copier fichier<br>
+cd CatChapp<br>
+npm install<br>
+npm starr<br>
+<br><br>
+Exemple d'user type :<br>
+louiseTest@gmail.com<br>
+123456<br>
