@@ -4,6 +4,7 @@ Projet Application Mobile
 
 Services à implémenter/implémentés :
 - Inscription + Connexion
+- Accéder à un profil
 - Prendre une photo (+ ajout dans le dossier de l'utilisateur)
 - Voir les photos des autres utilisateurs<br><br>
 
