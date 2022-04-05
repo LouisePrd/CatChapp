@@ -9,6 +9,7 @@ import AboutScreen from './components/AboutScreen';
 import ConnexionScreen from './components/ConnexionScreen';
 import InscriptionScreen from './components/InscriptionScreen';
 import CameraScreen from './components/CameraScreen';
+import ProfilScreen from './components/CameraScreen';
 
 export default class App extends React.Component {
   render() {
@@ -47,6 +48,13 @@ const AppNavigator = createStackNavigator({
   },
   Inscription: {
     screen: InscriptionScreen,
+    navigationOptions: () => ({
+      headerStyle: { backgroundColor: '#f1948a' },
+      headerTitle: (props) => <LogoTitle {...props} />,
+    }),
+  },
+  Profil: {
+    screen: ProfilScreen,
     navigationOptions: () => ({
       headerStyle: { backgroundColor: '#f1948a' },
       headerTitle: (props) => <LogoTitle {...props} />,

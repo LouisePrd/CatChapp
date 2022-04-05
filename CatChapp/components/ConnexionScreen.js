@@ -14,12 +14,13 @@ const ConnexionScreen = ({ navigation }) => {
 		signInWithEmailAndPassword(auth, email, password)
 	  .then((userCredential) => {
 		const user = userCredential.user;
-		console.log(user);
+		//console.log(user); Test pour firebase
+		navigation.navigate("Inscription");
 	  })
 	  .catch((error) => {
 		const errorCode = error.code;
 		const errorMessage = error.message;
-		console.log('nop');
+		//console.log('nop'); Test pour firebase
 	  });
 	};
 
