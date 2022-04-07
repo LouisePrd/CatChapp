@@ -25,7 +25,7 @@ Get Started (mode d'emploi à venir) :<br>
 Copier fichier<br>
 cd CatChapp<br>
 npm install<br>
-npm starr<br>
+npm start<br>
 <br><br>
 Exemple d'user type :<br>
 louiseTest@gmail.com<br>
