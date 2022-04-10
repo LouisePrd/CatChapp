@@ -1,5 +1,5 @@
 import {Keyboard,KeyboardAvoidingView,StyleSheet,Text,TextInput,TouchableOpacity,TouchableWithoutFeedback,View,} from "react-native";
-
+import { Alert } from 'react-native';
 import { StatusBar } from "expo-status-bar";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { showMessage } from "react-native-flash-message";
@@ -14,13 +14,13 @@ const ConnexionScreen = ({ navigation }) => {
 		signInWithEmailAndPassword(auth, email, password)
 	  .then((userCredential) => {
 		const user = userCredential.user;
-		//console.log(user); Test pour firebase
-		navigation.navigate("Inscription");
+		console.log(user);
+		navigation.navigate("Profil");
 	  })
 	  .catch((error) => {
 		const errorCode = error.code;
 		const errorMessage = error.message;
-		//console.log('nop'); Test pour firebase
+		Alert.alert('Pas si vite !', 'Les infos ne correspondent pas.');
 	  });
 	};
 
